@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Thêm bệnh nhân</title>
+  </head>
+  <body>
+    <h1>Thêm bệnh nhân</h1>
+    <form action="{{ url_for('add_patient') }}" method="post">
+      <label>Họ tên:</label>
+      <input type="text" name="ho_ten" required /><br />
+      <label>Giới tính:</label>
+      <input type="text" name="gioi_tinh" required /><br />
+      <label>Năm sinh:</label>
+      <input type="number" name="nam_sinh" required /><br />
+      <label>Địa chỉ:</label>
+      <input type="text" name="dia_chi" required /><br />
+      <label>Điện thoại:</label>
+      <input type="text" name="dien_thoai" required /><br />
+      <button type="submit">Thêm</button>
+    </form>
+    <a href="{{ url_for('index') }}">Trở về</a>
+  </body>
+</html>

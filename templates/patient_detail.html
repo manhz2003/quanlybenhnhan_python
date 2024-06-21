@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chi tiết bệnh nhân</title>
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid black;
+      }
+      th,
+      td {
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Chi tiết bệnh nhân</h1>
+    <p><strong>Mã bệnh nhân:</strong> {{ patient.ma_benh_nhan }}</p>
+    <p><strong>Họ tên:</strong> {{ patient.ho_ten }}</p>
+    <p><strong>Giới tính:</strong> {{ patient.gioi_tinh }}</p>
+    <p><strong>Năm sinh:</strong> {{ patient.nam_sinh }}</p>
+    <p><strong>Địa chỉ:</strong> {{ patient.dia_chi }}</p>
+    <p><strong>Điện thoại:</strong> {{ patient.dien_thoai }}</p>
+
+    <h2>Danh sách khám bệnh</h2>
+    <table>
+      <tr>
+        <th>Số khám</th>
+        <th>Ngày khám</th>
+        <th>Tổng tiền</th>
+      </tr>
+      {% for record in kham_benh %}
+      <tr>
+        <td>{{ record.so_kham }}</td>
+        <td>{{ record.ngay_kham }}</td>
+        <td>{{ record.tong_tien }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <h3>Thống kê</h3>
+    <p><strong>Tổng số lần khám bệnh:</strong> {{ total_visits }}</p>
+    <p><strong>Tổng tiền đã thanh toán:</strong> {{ total_amount }}</p>
+
+    <a href="{{ url_for('add_visit', id=patient.ma_benh_nhan) }}"
+      >Thêm lượt khám bệnh</a
+    >
+    <br /><br />
+    <a href="{{ url_for('index') }}">Trở về danh sách bệnh nhân</a>
+  </body>
+</html>

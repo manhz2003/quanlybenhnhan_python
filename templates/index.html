@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quản lý bệnh nhân</title>
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid black;
+      }
+      th,
+      td {
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Danh sách bệnh nhân</h1>
+    <a href="{{ url_for('add_patient') }}">Thêm bệnh nhân</a>
+    <table>
+      <tr>
+        <th>Mã bệnh nhân</th>
+        <th>Họ tên</th>
+        <th>Giới tính</th>
+        <th>Năm sinh</th>
+        <th>Địa chỉ</th>
+        <th>Điện thoại</th>
+        <th>Hành động</th>
+      </tr>
+      {% for patient in patients %}
+      <tr>
+        <td>
+          <a href="{{ url_for('patient_detail', id=patient.ma_benh_nhan) }}"
+            >{{ patient.ma_benh_nhan }}</a
+          >
+        </td>
+        <td>{{ patient.ho_ten }}</td>
+        <td>{{ patient.gioi_tinh }}</td>
+        <td>{{ patient.nam_sinh }}</td>
+        <td>{{ patient.dia_chi }}</td>
+        <td>{{ patient.dien_thoai }}</td>
+        <td>
+          <a href="{{ url_for('edit_patient', id=patient.ma_benh_nhan) }}"
+            >Sửa</a
+          >
+          <form
+            action="{{ url_for('delete_patient', id=patient.ma_benh_nhan) }}"
+            method="post"
+            style="display: inline"
+          >
+            <button type="submit">Xóa</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+    <form action="{{ url_for('search_patient') }}" method="post">
+      <input type="text" name="search_term" placeholder="Tìm kiếm bệnh nhân" />
+      <button type="submit">Tìm kiếm</button>
+    </form>
+  </body>
+</html>

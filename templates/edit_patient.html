@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sửa thông tin bệnh nhân</title>
+  </head>
+  <body>
+    <h1>Sửa thông tin bệnh nhân</h1>
+    <form
+      action="{{ url_for('edit_patient', id=patient.ma_benh_nhan) }}"
+      method="post"
+    >
+      <label>Họ tên:</label>
+      <input
+        type="text"
+        name="ho_ten"
+        value="{{ patient.ho_ten }}"
+        required
+      /><br />
+      <label>Giới tính:</label>
+      <input
+        type="text"
+        name="gioi_tinh"
+        value="{{ patient.gioi_tinh }}"
+        required
+      /><br />
+      <label>Năm sinh:</label>
+      <input
+        type="number"
+        name="nam_sinh"
+        value="{{ patient.nam_sinh }}"
+        required
+      /><br />
+      <label>Địa chỉ:</label>
+      <input
+        type="text"
+        name="dia_chi"
+        value="{{ patient.dia_chi }}"
+        required
+      /><br />
+      <label>Điện thoại:</label>
+      <input
+        type="text"
+        name="dien_thoai"
+        value="{{ patient.dien_thoai }}"
+        required
+      /><br />
+      <button type="submit">Cập nhật</button>
+    </form>
+    <a href="{{ url_for('index') }}">Trở về</a>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Thêm lượt khám bệnh</title>
+  </head>
+  <body>
+    <h1>Thêm lượt khám bệnh cho bệnh nhân</h1>
+    <form action="{{ url_for('add_visit', id=patient_id) }}" method="post">
+      <label for="ngay_kham">Ngày khám:</label>
+      <input type="date" id="ngay_kham" name="ngay_kham" required /><br /><br />
+      <label for="tong_tien">Tổng tiền:</label>
+      <input
+        type="number"
+        id="tong_tien"
+        name="tong_tien"
+        required
+      /><br /><br />
+      <button type="submit">Thêm lượt khám bệnh</button>
+    </form>
+    <a href="{{ url_for('index') }}">Trở về danh sách bệnh nhân</a>
+  </body>
+</html>
